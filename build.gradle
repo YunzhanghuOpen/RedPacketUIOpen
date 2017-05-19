@@ -1,14 +1,13 @@
 apply plugin: 'com.android.library'
-apply from: 'publish_aar.gradle'
 android {
-    compileSdkVersion androidCompileSdkVersion
-    buildToolsVersion androidBuildToolsVersion
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
-        minSdkVersion androidMinSdkVersion
-        targetSdkVersion androidTargetSdkVersion
-        versionCode androidVersionCode
-        versionName androidVersionName
+        minSdkVersion 11
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
     }
     buildTypes {
         release {
@@ -21,46 +20,11 @@ android {
         release
     }
 
-    libraryVariants.all { variant ->
-        variant.outputs.each { output ->
-            def outputFile = output.outputFile
-            if (outputFile != null && outputFile.name.endsWith('release.aar')) {
-                def aarName = "redpacket-alipay-${androidVersionName}.aar"
-                output.outputFile = new File(outputFile.parent, aarName)
-            }
-        }
-    }
-    
 }
 dependencies {
-    provided files('libs/glide-3.7.0.jar')
-    provided files('libs/alipaySdk-20161129.jar')
-    if (IsBuildModel.toBoolean()) {
-        //打包依赖
-        provided files('libs/volley-1.0.19.jar')
-        compile files("libs/redpacketsdk-alipay-${androidVersionName}.jar")
-    } else {
-        //开发依赖
-        compile project(':RedPacketSDK')
-    }
-    provided presentationDependencies.supportV4
-    provided presentationDependencies.recyclerView
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
 }
 
-task copyLibs(type: Copy) {
-    from configurations.compile
-    into 'libs'
-}
-
-def SDK_BASENAME = "redpacketalipay-";
-def SDK_VERSION = androidVersionName;
-def sdkDestinationPath = "build";
-def jarPath = "build/intermediates/bundles/default/classes.jar";
-def zipFile = file(jarPath);
-
-task makeRedPacketJar(type: Jar) {
-    from zipTree(zipFile);
-    baseName = SDK_BASENAME + SDK_VERSION;
-    destinationDir = file(sdkDestinationPath);
-}
 

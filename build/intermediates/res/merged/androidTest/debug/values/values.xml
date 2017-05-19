@@ -74,6 +74,7 @@
     <color name="rp_top_red_color">#D24F44</color>
     <color name="rp_transparent_red_color">#edb9b4</color>
     <declare-styleable name="RPRoundCard"><attr format="reference" name="RPCardBgImg"/><attr format="reference|color" name="RPCardBgColor"/><attr format="dimension" name="RPCardRadius"/><attr format="integer" name="RPCardBgType"/></declare-styleable>
+    <declare-styleable name="RecyclerView"><attr format="string" name="layoutManager"/><attr name="android:orientation"/><attr name="android:descendantFocusability"/><attr format="integer" name="spanCount"/><attr format="boolean" name="reverseLayout"/><attr format="boolean" name="stackFromEnd"/></declare-styleable>
     <declare-styleable name="app"><attr format="string" name="RPmytitle"/><attr format="reference" name="RPleftImage"/><attr format="reference" name="RPrightImage"/><attr format="string" name="RPrightText"/><attr format="reference|color" name="RPrightTextColor"/><attr format="dimension" name="RPrightTextSize"/><attr format="string" name="RPsubTitleText"/><attr format="reference|color" name="RPsubTitleTextColor"/><attr format="dimension" name="RPsubTitleTextSize"/><attr format="reference|color" name="RPtitleTextColor"/><attr format="dimension" name="RPtitleTextSize"/><attr format="reference|color" name="RPtitleBackground"/></declare-styleable>
     <dimen name="dialogHeight">401dp</dimen>
     <dimen name="dialogWidth">288dp</dimen>
@@ -93,6 +94,9 @@
     <dimen name="font69px">23sp</dimen>
     <dimen name="font78px">26sp</dimen>
     <dimen name="font90px">30sp</dimen>
+    <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
+    <dimen name="item_touch_helper_swipe_escape_max_velocity">800dp</dimen>
+    <dimen name="item_touch_helper_swipe_escape_velocity">120dp</dimen>
     <dimen name="size102px">34dp</dimen>
     <dimen name="size105px">35dp</dimen>
     <dimen name="size108px">36dp</dimen>
@@ -145,6 +149,7 @@
     <dimen name="size96px">32dp</dimen>
     <dimen name="size99px">33dp</dimen>
     <dimen name="size9px">3dp</dimen>
+    <item name="item_touch_helper_previous_elevation" type="id"/>
     <string name="ad_check_land_page">去看看</string>
     <string name="ad_packet_out">来晚了，红包已过期</string>
     <string name="ad_packet_share">分享给好友</string>

@@ -2,5 +2,9 @@
     {
         "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/debug/color/rp_tv_red_selector.xml",
         "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/color/rp_tv_red_selector.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/AndroidDemo/RedPacketDemo/RedPacketUIOpen/build/intermediates/res/merged/debug/color/rp_tv_red_selector.xml",
+        "source": "/Users/Max/AndroidStudioProjects/AndroidDemo/RedPacketDemo/RedPacketUIOpen/src/main/res/color/rp_tv_red_selector.xml"
     }
 ]
