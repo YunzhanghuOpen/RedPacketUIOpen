@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="app">
+        <attr name="RPmytitle" format="string"/>
+        <attr name="RPleftImage" format="reference"/>
+        <attr name="RPrightImage" format="reference"/>
+        <attr name="RPrightText" format="string"/>
+        <attr name="RPrightTextColor" format="reference|color"/>
+        <attr name="RPrightTextSize" format="dimension"/>
+        <attr name="RPsubTitleText" format="string"/>
+        <attr name="RPsubTitleTextColor" format="reference|color"/>
+        <attr name="RPsubTitleTextSize" format="dimension"/>
+        <attr name="RPtitleTextColor" format="reference|color"/>
+        <attr name="RPtitleTextSize" format="dimension"/>
+        <attr name="RPtitleBackground" format="reference|color"/>
+    </declare-styleable>
+
+    <declare-styleable name="RPRoundCard">
+        <attr name="RPCardBgImg" format="reference"/>
+        <attr name="RPCardBgColor" format="reference|color"/>
+        <attr name="RPCardRadius" format="dimension"/>
+        <attr name="RPCardBgType" format="integer"/>
+    </declare-styleable>
+</resources>

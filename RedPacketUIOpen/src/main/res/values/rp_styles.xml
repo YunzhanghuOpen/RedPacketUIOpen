@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="SendMoneyLeftTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:textColor">@color/rp_text_black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="SendMoneyEditTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textColor">@color/rp_text_black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="SendMoneyRightTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginRight">14dp</item>
+        <item name="android:textColor">@color/rp_text_black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="SendMoneyButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:background">@drawable/rp_btn_red_selector</item>
+        <item name="android:textColor">@color/rp_money_white</item>
+        <item name="android:textSize">@dimen/font51px</item>
+    </style>
+
+    <style name="SendMoneyGreetingsStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">62dp</item>
+        <item name="android:background">@color/rp_money_white</item>
+        <item name="android:gravity">top</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:padding">14dp</item>
+    </style>
+
+    <style name="SendMoneyRLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:background">@color/rp_money_white</item>
+    </style>
+
+    <style name="SendMoneyGroupRuleTipsStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textColor">@color/rp_money_red_light</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="DividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/rp_divider_color</item>
+    </style>
+
+    <style name="DividerStyleNoHead" parent="DividerStyle">
+        <item name="android:layout_marginLeft">@dimen/size45px</item>
+    </style>
+
+    <style name="DialogTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@color/rp_text_black</item>
+        <item name="android:textSize">@dimen/font51px</item>
+    </style>
+
+    <style name="AvatarIconStyle">
+        <item name="android:layout_width">@dimen/size165px</item>
+        <item name="android:layout_height">@dimen/size165px</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/size129px</item>
+    </style>
+
+    <style name="ReceivedMoneyStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/rp_text_black</item>
+        <item name="android:textSize">@dimen/font132px</item>
+    </style>
+
+    <style name="RecordReceivedCountStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/font105px</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/rp_text_light_grey</item>
+    </style>
+
+
+    <style name="UserNameStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/size15px</item>
+        <item name="android:textColor">@color/rp_text_black</item>
+        <item name="android:textSize">@dimen/font45px</item>
+    </style>
+
+    <style name="RecordReceivedCountTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/size36px</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/font36px</item>
+    </style>
+
+    <style name="LoadingProgressStyle" parent="@android:style/Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/rp_loading_anim</item>
+        <item name="android:indeterminateBehavior">repeat</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:layout_width">@dimen/size84px</item>
+        <item name="android:layout_height">@dimen/size84px</item>
+        <item name="android:indeterminate">false</item>
+    </style>
+
+    <style name="DialogPayTypeStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/rp_text_black</item>
+        <item name="android:textSize">@dimen/font45px</item>
+    </style>
+
+    <style name="SendMoneyBottomTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/font39px</item>
+        <item name="android:textColor">@color/rp_text_light_grey</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginBottom">@dimen/size39px</item>
+    </style>
+
+</resources>

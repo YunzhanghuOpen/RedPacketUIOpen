@@ -1,0 +1,66 @@
+apply plugin: 'com.android.library'
+apply from: 'publish_aar.gradle'
+android {
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+        versionCode androidVersionCode
+        versionName androidVersionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    configurations {
+        debug
+        release
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('release.aar')) {
+                def aarName = "redpacket-alipay-${androidVersionName}.aar"
+                output.outputFile = new File(outputFile.parent, aarName)
+            }
+        }
+    }
+    
+}
+dependencies {
+    provided files('libs/glide-3.7.0.jar')
+    provided files('libs/alipaySdk-20161129.jar')
+    if (IsBuildModel.toBoolean()) {
+        //打包依赖
+        provided files('libs/volley-1.0.19.jar')
+        compile files("libs/redpacketsdk-alipay-${androidVersionName}.jar")
+    } else {
+        //开发依赖
+        compile project(':RedPacketSDK')
+    }
+    provided presentationDependencies.supportV4
+    provided presentationDependencies.recyclerView
+}
+
+task copyLibs(type: Copy) {
+    from configurations.compile
+    into 'libs'
+}
+
+def SDK_BASENAME = "redpacketalipay-";
+def SDK_VERSION = androidVersionName;
+def sdkDestinationPath = "build";
+def jarPath = "build/intermediates/bundles/default/classes.jar";
+def zipFile = file(jarPath);
+
+task makeRedPacketJar(type: Jar) {
+    from zipTree(zipFile);
+    baseName = SDK_BASENAME + SDK_VERSION;
+    destinationDir = file(sdkDestinationPath);
+}
+
