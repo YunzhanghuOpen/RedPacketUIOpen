@@ -1,0 +1,82 @@
+[
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_open_normal_shape.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_open_normal_shape.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_red_selector.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_red_selector.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_loading_anim.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_loading_anim.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_stroke_red_selector.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_stroke_red_selector.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_retry_normal_shape.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_retry_normal_shape.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_open_pressed_shape.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_open_pressed_shape.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_shape_white_conner.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_shape_white_conner.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_loading_bg.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_loading_bg.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_stroke_red_normal_shape.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_stroke_red_normal_shape.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_stroke_red_pressed_shape.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_stroke_red_pressed_shape.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_red_no_enable_shape.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_red_no_enable_shape.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_open_selector.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_open_selector.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_red_pressed_shape.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_red_pressed_shape.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_open_normal_shape_unsolid.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_open_normal_shape_unsolid.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_open_selector_unsolid.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_open_selector_unsolid.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_open_pressed_shape_unsolid.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_open_pressed_shape_unsolid.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_cancel_shape.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_cancel_shape.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_red_enable_shape.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_red_enable_shape.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_btn_ad_selector.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_btn_ad_selector.xml"
+    },
+    {
+        "merged": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/build/intermediates/res/merged/release/drawable/rp_sidebar_background.xml",
+        "source": "/Users/Max/AndroidStudioProjects/RedPacketDemo/RedPacketUI/src/main/res/drawable/rp_sidebar_background.xml"
+    }
+]

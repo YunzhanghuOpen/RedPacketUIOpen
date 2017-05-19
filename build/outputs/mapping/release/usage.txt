@@ -1,0 +1,116 @@
+com.easemob.redpacketui.AppManager:
+    31:31:public int size()
+    35:35:public synchronized android.app.Activity getForwardActivity()
+    49:55:public synchronized void clear()
+    58:64:public synchronized void clearToTop()
+com.easemob.redpacketui.BuildConfig
+com.easemob.redpacketui.adapter.GroupDetailAdapter:
+    private static final int TYPE_HEADER
+    private static final int TYPE_ITEM
+    private static final int TYPE_FOOTER
+    private static final int TYPE_CHECK
+com.easemob.redpacketui.adapter.ReceivedRecordAdapter:
+    private static final int TYPE_HEADER
+    private static final int TYPE_ITEM
+    private static final int TYPE_FOOTER
+com.easemob.redpacketui.adapter.SendRecordAdapter:
+    private static final int TYPE_HEADER
+    private static final int TYPE_ITEM
+    private static final int TYPE_FOOTER
+com.easemob.redpacketui.alipay.AliPay:
+    private static final int SDK_PAY_FLAG
+    private static final int SDK_AUTH_FLAG
+com.easemob.redpacketui.alipay.AuthResult:
+    88:88:public java.lang.String getMemo()
+    95:95:public java.lang.String getResult()
+    116:116:public java.lang.String getAlipayOpenId()
+com.easemob.redpacketui.base.BaseActivity:
+    101:103:protected void startActivity(java.lang.Class)
+    112:117:protected void startActivity(java.lang.Class,android.os.Bundle)
+    125:128:protected void startActivityThenFinish(java.lang.Class)
+    137:143:protected void startActivityThenFinish(java.lang.Class,android.os.Bundle)
+    152:154:protected void startActivityForResult(java.lang.Class,int)
+    164:169:protected void startActivityForResult(java.lang.Class,int,android.os.Bundle)
+com.easemob.redpacketui.base.BaseDialogFragment:
+    147:149:protected void startActivity(java.lang.Class)
+    158:163:protected void startActivity(java.lang.Class,android.os.Bundle)
+    172:174:protected void startActivityForResult(java.lang.Class,int)
+    184:189:protected void startActivityForResult(java.lang.Class,int,android.os.Bundle)
+    225:234:protected void toggleShowError(boolean,java.lang.String,android.view.View$OnClickListener)
+    247:251:protected void closeSoftKeyboard(android.view.View)
+    254:268:private int getRealScreenHeight()
+    272:272:public boolean hasNavigationBar()
+    276:281:public int getNavigationBarHeight(android.content.Context)
+com.easemob.redpacketui.base.BaseFragment:
+    141:143:protected void startActivity(java.lang.Class)
+    152:157:protected void startActivity(java.lang.Class,android.os.Bundle)
+    166:168:protected void startActivityForResult(java.lang.Class,int)
+    178:183:protected void startActivityForResult(java.lang.Class,int,android.os.Bundle)
+com.easemob.redpacketui.base.BaseView
+com.easemob.redpacketui.indexrecyclerview.CharacterParser:
+    private static final int maxAscii
+    private static final int minAscii
+    private static final int maxExtraAscii
+    private static final int minExtraAscii
+com.easemob.redpacketui.indexrecyclerview.StickyRecyclerHeadersDecoration:
+    125:131:public int findHeaderPositionUnder(int,int)
+com.easemob.redpacketui.indexrecyclerview.StickyRecyclerHeadersTouchListener
+com.easemob.redpacketui.indexrecyclerview.StickyRecyclerHeadersTouchListener$1
+com.easemob.redpacketui.indexrecyclerview.StickyRecyclerHeadersTouchListener$OnHeaderClickListener
+com.easemob.redpacketui.indexrecyclerview.StickyRecyclerHeadersTouchListener$SingleTapDetector
+com.easemob.redpacketui.loading.IVaryViewHelper:
+    public abstract android.view.View getCurrentLayout()
+    public abstract android.view.View getView()
+com.easemob.redpacketui.loading.VaryViewHelper:
+    48:48:public android.view.View getCurrentLayout()
+    84:84:public android.view.View getView()
+com.easemob.redpacketui.ui.base.RPBaseActivity:
+    22:23:public void showError(java.lang.String)
+    27:28:public void showException(java.lang.String)
+com.easemob.redpacketui.ui.base.RPBaseDialogFragment:
+    59:60:public void showError(java.lang.String)
+    64:65:public void showException(java.lang.String)
+com.easemob.redpacketui.ui.base.RPBaseFragment:
+    37:38:public void showError(java.lang.String)
+    42:43:public void showException(java.lang.String)
+com.easemob.redpacketui.ui.fragment.GroupDetailFragment:
+    private static final java.lang.String ARGS_MONEY_DETAIL
+    private static final java.lang.String ARGS_DETAIL_LIST
+    private static final java.lang.String ARGS_PAGE_INFO
+    private static final java.lang.String ARGS_MSG_DIRECT
+com.easemob.redpacketui.ui.fragment.PayTipsDialogFragment:
+    private static final java.lang.String ARGS_PAY_STATUS
+    private static final java.lang.String ARGS_MESSAGE
+com.easemob.redpacketui.ui.fragment.ReceivedRecordFragment:
+    private static final java.lang.String ARGS_USER_NAME
+    private static final java.lang.String ARGS_USER_AVATAR
+com.easemob.redpacketui.ui.fragment.RedPacketDialogFragment:
+    private static final java.lang.String ARGS_MONEY_INFO
+com.easemob.redpacketui.ui.fragment.SRedPacketDialogFragment:
+    private static final java.lang.String ARGS_MONEY_INFO
+    private static final java.lang.String ARGS_CURRENT_USER_ID
+com.easemob.redpacketui.ui.fragment.SendGroupPacketFragment:
+    private static final int FLAG_OPEN_GROUP_MEMBER
+com.easemob.redpacketui.ui.fragment.SendPacketBaseFragment:
+    public static final java.lang.String ARGS_MONEY_INFO
+    54:58:public static com.easemob.redpacketui.ui.fragment.SendPacketBaseFragment newInstance(com.easemob.redpacketsdk.bean.RedPacketInfo)
+com.easemob.redpacketui.ui.fragment.SendRecordFragment:
+    private static final java.lang.String ARGS_USER_NAME
+    private static final java.lang.String ARGS_USER_AVATAR
+com.easemob.redpacketui.ui.fragment.SingleDetailFragment:
+    private static final java.lang.String ARGS_MONEY_DETAIL
+com.easemob.redpacketui.utils.ClickUtil:
+    public static final long INTERVAL
+    6:6:public ClickUtil()
+com.easemob.redpacketui.utils.DateUtils:
+    public static final java.lang.String FORMAT_YYYY_MM_DD
+    public static final java.lang.String FORMAT_MM_DD
+    public static final java.lang.String FORMAT_HH_MM
+    public static final java.lang.String FORMAT_TIMESTAMP
+    17:17:public DateUtils()
+com.easemob.redpacketui.utils.NetUtils:
+    12:12:public NetUtils()
+com.easemob.redpacketui.utils.PageUtil:
+    public static final int PAGE_LIMIT
+com.easemob.redpacketui.widget.RPRoundCard:
+    private static final int DEFAULT_CORNER_RADIUS
