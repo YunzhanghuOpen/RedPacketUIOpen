@@ -144,7 +144,11 @@ public class SRedPacketDialogFragment extends RPBaseDialogFragment<ReceivePacket
         tvUserName.setText(mRedPacketInfo.senderNickname);
         if (status == RPConstant.RED_PACKET_STATUS_EXPIRED) {//红包过期
             mBtnOpen.setVisibility(View.GONE);
+            mLayoutAvatar.setVisibility(View.GONE);
+            tvUserName.setVisibility(View.GONE);
             tvTitle.setVisibility(View.GONE);
+            mTvGreeting.setVisibility(View.VISIBLE);
+            mTvGreeting.setText(mContext.getText(R.string.money_expired_str));
             return;
         }
         if (!TextUtils.equals(mCurrentUserId, mRedPacketInfo.receiverId)) {//不是专属红包接受者
@@ -183,7 +187,7 @@ public class SRedPacketDialogFragment extends RPBaseDialogFragment<ReceivePacket
                 dismiss();
             } else if (mBtnState == 2) {//偷看一下
                 mBtnOpen.setClickable(false);
-                mLayoutAvatar.findViewById(R.id.layout_exclusive_avatar).setVisibility(View.GONE);
+                mLayoutAvatar.setVisibility(View.GONE);
                 tvUserName.setVisibility(View.GONE);
                 tvTitle.setVisibility(View.GONE);
                 mTvGreeting.setVisibility(View.VISIBLE);
