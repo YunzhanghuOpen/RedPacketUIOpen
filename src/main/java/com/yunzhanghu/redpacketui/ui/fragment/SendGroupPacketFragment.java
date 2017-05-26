@@ -140,7 +140,6 @@ public class SendGroupPacketFragment extends SendPacketBaseFragment {
         mEtGreeting.setHint(mGreetingArray[0]);
         mTvReceiveName = (TextView) view.findViewById(R.id.tv_receive_name);
         view.findViewById(R.id.layout_members).setOnClickListener(this);
-        initPopupWindow();
         mEtGreeting.addTextChangedListener(new GreetingTextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
@@ -223,12 +222,10 @@ public class SendGroupPacketFragment extends SendPacketBaseFragment {
                                             setAmountRedColor();
                                             showErrorMsg(mContext.getString(R.string.input_money_error));
                                         } else {
-                                            hidePopupWindow();
                                             enableButton(false);
                                         }
                                         mTvMoneyAmount.setText(getString(R.string.rp_str_amount_zero));
                                     } else {
-                                        hidePopupWindow();
                                         if (getStartZeroNumber(s.toString()) < 9) {
                                             mTvMoneyAmount.setText(getString(R.string.rp_str_amount_zero));
                                             enableButton(false);
