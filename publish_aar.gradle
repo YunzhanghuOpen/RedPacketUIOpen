@@ -1,0 +1,24 @@
+apply plugin: 'maven'
+
+apply from: '../ChatDemoRedPacket/buildsystem/dependencies.gradle'
+
+
+ext {
+    PUBLISH_GROUP_ID = "com.yunzhanghu.redpacket"
+    PUBLISH_ARTIFACT_ID = "redpacket-alipay"
+    PUBLISH_VERSION = androidVersionName
+    LOCAL_REPO_URL_DEV = "/Users/Max/AndroidStudioProjects/redpacket-maven-repo/snapshots"
+    LOCAL_REPO_URL_RELEASE = "/Users/Max/AndroidStudioProjects/redpacket-maven-repo/release"
+}
+
+
+uploadArchives {
+    repositories.mavenDeployer {
+        def deployPath = file(LOCAL_REPO_URL_RELEASE)
+        println(deployPath)
+        repository(url: "file://${deployPath.absolutePath}")
+        pom.groupId = PUBLISH_GROUP_ID
+        pom.artifactId = PUBLISH_ARTIFACT_ID
+        pom.version = PUBLISH_VERSION
+    }
+}

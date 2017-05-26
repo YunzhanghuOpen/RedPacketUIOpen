@@ -1,13 +1,14 @@
 apply plugin: 'com.android.library'
+apply from: 'publish_aar.gradle'
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion 11
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+        versionCode androidVersionCode
+        versionName androidVersionName
     }
     buildTypes {
         release {
@@ -20,13 +21,31 @@ android {
         release
     }
 
+    libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('release.aar')) {
+                def aarName = "redpacket-alipay-${androidVersionName}.aar"
+                output.outputFile = new File(outputFile.parent, aarName)
+            }
+        }
+    }
+
 }
+
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'com.yunzhanghu.redpacket:redpacket-sdk-alipay:2.0.0'
+    provided files('libs/alipaySdk-20161129.jar')
+    provided 'com.github.bumptech.glide:glide:3.7.0'
+    if (IsBuildModel.toBoolean()) {
+        //打包依赖
+        provided files('libs/volley-1.0.19.jar')
+        compile "com.yunzhanghu.redpacket:redpacket-sdk-alipay:${androidVersionName}"
+    } else {
+        //开发依赖
+        compile project(':RedPacketSDK')
+    }
+    provided presentationDependencies.supportV4
+    provided presentationDependencies.recyclerView
 }
 
 
