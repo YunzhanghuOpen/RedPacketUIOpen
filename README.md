@@ -149,7 +149,7 @@ RedPacket.getInstance().initRPToken(currentUserId, new RPTokenCallback() {
 | receiverId        | String | 接收者id                     |
 | receiverNickname  | String | 接收者昵称                     |
 | receiverAvatarUrl | String | 接收者头像url                  |
-| redPacketType     | String | 红包类型(小额随机红包传入) **（见注1） ** |
+| redPacketType     | String | 红包类型(小额随机红包传入) （见注1）  |
 
 - 群聊红包
 
@@ -163,7 +163,7 @@ RedPacket.getInstance().initRPToken(currentUserId, new RPTokenCallback() {
 | senderAvatarUrl   | String | 发送者头像url      |
 | groupId           | String | 群id           |
 | totalCount        | int    | 红包个数          |
-| redPacketType     | String | 红包类型**（见注1）** |
+| redPacketType     | String | 红包类型（见注1） |
 
 - 群专属红包
 
@@ -177,12 +177,12 @@ RedPacket.getInstance().initRPToken(currentUserId, new RPTokenCallback() {
 | senderAvatarUrl   | String | 发送者头像url      |
 | groupId           | String | 群id           |
 | totalCount        | int    | 红包个数          |
-| redPacketType     | String | 红包类型**（见注1）** |
+| redPacketType     | String | 红包类型 (见注1) |
 | receiverId        | String | 专属红包接收者id     |
 | receiverNickname  | String | 专属红包接收者昵称     |
 | receiverAvatarUrl | String | 专属红包接收者头像url  |
 
-- **注1：**红包类型及对应的常量见下表
+- 注1:红包类型及对应的常量见下表
 
 | 红包类型         | 对应的常量值                                   |
 | ------------ | ---------------------------------------- |
@@ -260,7 +260,7 @@ RedPacket.getInstance().initRPToken(currentUserId, new RPTokenCallback() {
 - 当前用户为红包消息接收方时，以下情况回调此方法：
   - 该红包类型为**非**小额随机红包，且红包消息接收者未领取该红包。
 
-   **isShowDialog为false时展示红包详情页的UI。**
+​    **isShowDialog为false时展示红包详情页的UI。**
 
 - 当前用户为红包消息发送方时，以下情况回调此方法：
   - 该红包类型为单聊红包；
@@ -272,7 +272,7 @@ RedPacket.getInstance().initRPToken(currentUserId, new RPTokenCallback() {
 - 当前用户为红包消息接收方时，以下情况回调此方法：
   - 该红包类型为小额随机红包；
   - 红包消息接收者已领取过该红包。
-- **以上逻辑已封装在红包SDK内部，开发者只需实现回调进行UI展示即可。**
+- **以上逻辑已封装在红包SDK内部，开发者只需实现回调进行UI展示即可。**
 
 #### onPacketExpired(String message)
 
