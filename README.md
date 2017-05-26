@@ -182,7 +182,7 @@ RedPacket.getInstance().initRPToken(currentUserId, new RPTokenCallback() {
 | receiverNickname  | String | 专属红包接收者昵称     |
 | receiverAvatarUrl | String | 专属红包接收者头像url  |
 
-- 注1:红包类型及对应的常量见下表
+- 注1：红包类型及对应的常量见下表
 
 | 红包类型         | 对应的常量值                                   |
 | ------------ | ---------------------------------------- |
@@ -370,7 +370,7 @@ RedPacket.getInstance().initRPToken(currentUserId, new RPTokenCallback() {
 | offset   | int  | 红包记录列表起始索引         |
 | length   | int  | 红包记录列表单页长度         |
 
-- **注：**enventTag值为RPConstatn.EVENT_REFRESH_DATA或RPConstant.EVENT_LOAD_MORE_DATA，对应的含义分别为获取首页数据和加载更多数据。
+- 注：enventTag值为RPConstatn.EVENT_REFRESH_DATA或RPConstant.EVENT_LOAD_MORE_DATA，对应的含义分别为获取首页数据和加载更多数据。
 
 ### 6.2 getAuthInfo()
 
@@ -438,9 +438,9 @@ RedPacket.getInstance().initRPToken(currentUserId, new RPTokenCallback() {
 
 ## 7.红包详情接口
 
-- ## 接口说明
+- 接口说明
 
-​       红包详情接口封装在RedPacketDetailPresenter，用于获取红包详情数据。
+  红包详情接口封装在RedPacketDetailPresenter，用于获取红包详情数据。
 
 ### getPacketDetail(String redPacketId, String latestReceiverId, int offset, int length)
 
@@ -451,7 +451,7 @@ RedPacket.getInstance().initRPToken(currentUserId, new RPTokenCallback() {
 | offset           | int    | 红包详情列表起始索引 |
 | length           | int    | 红包详情列表单页长度 |
 
-- **注：**latestReceiverId需要传入领取人列表中第一条数据的receiverId，第一次获取时可传入空字符串。
+- 注：latestReceiverId需要传入领取人列表中第一条数据的receiverId，第一次获取时可传入空字符串。
 
 ### RedPacketDetailContract.View回调接口
 
