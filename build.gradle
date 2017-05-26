@@ -26,6 +26,7 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.yunzhanghu.redpacket:redpacket-sdk-alipay:2.0.0'
 }
 
 
