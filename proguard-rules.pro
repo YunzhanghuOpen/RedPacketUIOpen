@@ -64,7 +64,6 @@
 -dontwarn android.support.v4.**
 
 
--dontwarn com.squareup.picasso.OkHttpDownloader
 #不混淆内部类
 -keepattributes Exceptions,InnerClasses,Signature
 
@@ -72,6 +71,7 @@
 -keep class org.apache.** { *;}
 
 -keep class com.yunzhanghu.redpacketsdk.** {*;}
+-dontwarn com.yunzhanghu.redpacketsdk.**
 
 -keep public class com.yunzhanghu.redpacketui.utils.RPRedPacketUtil{*;}
 
