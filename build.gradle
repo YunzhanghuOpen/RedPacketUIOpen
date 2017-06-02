@@ -20,7 +20,7 @@ android {
 dependencies {
     compile files('libs/alipaySdk-20161129.jar')
     compile files('libs/volley-1.0.19.jar')
-    compile 'com.yunzhanghu.redpacket:redpacket-sdk-alipay:2.0.0'
+    compile 'com.hyphenate.redpacket:redpacket-sdk-alipay:2.0.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'

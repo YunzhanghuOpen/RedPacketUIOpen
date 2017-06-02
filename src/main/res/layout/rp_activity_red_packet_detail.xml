@@ -7,7 +7,7 @@
                 android:orientation="vertical"
     >
 
-    <com.yunzhanghu.redpacketui.widget.RPTitleBar
+    <com.easemob.redpacketui.widget.RPTitleBar
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

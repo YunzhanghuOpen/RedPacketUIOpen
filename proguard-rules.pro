@@ -70,13 +70,13 @@
 -dontwarn org.apache.**
 -keep class org.apache.** { *;}
 
--keep class com.yunzhanghu.redpacketsdk.** {*;}
--dontwarn com.yunzhanghu.redpacketsdk.**
+-keep class com.easemob.redpacketsdk.** {*;}
+-dontwarn com.easemob.redpacketsdk.**
 
--keep public class com.yunzhanghu.redpacketui.utils.RPRedPacketUtil{*;}
+-keep public class com.easemob.redpacketui.utils.RPRedPacketUtil{*;}
 
 #保持内部类不被混淆
--keep public class com.yunzhanghu.redpacketui.utils.RPRedPacketUtil$RPOpenPacketCallback{
+-keep public class com.easemob.redpacketui.utils.RPRedPacketUtil$RPOpenPacketCallback{
       public <fields>;
       public <methods>;
 }
@@ -84,7 +84,7 @@
 
 -keep class com.android.volley.** {*;}
 
--keep public class com.yunzhanghu.redpacketui.R$*{
+-keep public class com.easemob.redpacketui.R$*{
     public static final int *;
 }
 #支付宝不被混淆

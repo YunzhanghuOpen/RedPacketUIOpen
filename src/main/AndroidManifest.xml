@@ -6,28 +6,28 @@
     <application>
         <!-- 发红包页面 -->
         <activity
-            android:name="com.yunzhanghu.redpacketui.ui.activity.RPRedPacketActivity"
+            android:name="com.easemob.redpacketui.ui.activity.RPRedPacketActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="adjustPan|stateVisible"
             />
         <!-- 红包详情 -->
         <activity
-            android:name="com.yunzhanghu.redpacketui.ui.activity.RPDetailActivity"
+            android:name="com.easemob.redpacketui.ui.activity.RPDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="adjustPan"
             />
         <!-- 红包记录 -->
         <activity
-            android:name="com.yunzhanghu.redpacketui.ui.activity.RPRecordActivity"
+            android:name="com.easemob.redpacketui.ui.activity.RPRecordActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="adjustPan"
             />
         <!-- 群成员列表页 -->
         <activity
-            android:name="com.yunzhanghu.redpacketui.ui.activity.RPGroupMemberActivity"
+            android:name="com.easemob.redpacketui.ui.activity.RPGroupMemberActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="adjustPan|stateHidden"
