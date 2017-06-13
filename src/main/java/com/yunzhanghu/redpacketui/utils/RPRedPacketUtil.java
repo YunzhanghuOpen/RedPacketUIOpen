@@ -138,6 +138,7 @@ public class RPRedPacketUtil {
 
             @Override
             public void onPacketExpired(String message) {
+                callBack.hideLoading();
                 PayTipsDialogFragment dialog = PayTipsDialogFragment.newInstance(RPConstant.CLIENT_CODE_OTHER_ERROR, message);
                 showAllowingStateLost(dialog, activity);
             }
