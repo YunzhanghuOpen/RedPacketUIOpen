@@ -93,13 +93,7 @@ public class RPRedPacketUtil {
         RedPacket.getInstance().initRPToken(currentUserInfo.currentUserId, new RPTokenCallback() {
             @Override
             public void onTokenSuccess() {
-                CheckPacketStatusPresenter presenter;
-                if (redPacketType.equals(RPConstant.RED_PACKET_TYPE_ADVERTISEMENT)) {
-                    presenter = checkADRedPacketStatus(activity, callBack);
-                } else {
-                    presenter = checkRedPacketStatus(activity, currentUserInfo, callBack);
-                }
-                presenter.checkRedPacketStatus(redPacketId);
+                checkRedPacketStatus(redPacketId, redPacketType, activity, callBack);
             }
 
             @Override
@@ -116,59 +110,31 @@ public class RPRedPacketUtil {
     }
 
     /**
-     * 查询广告红包状态
+     * 查询红包状态
      *
-     * @param activity FragmentActivity
-     * @param callBack RPOpenPacketCallback
-     * @return CheckPacketStatusPresenter
+     * @param redPacketId   红包id
+     * @param redPacketType 红包类型
+     * @param activity      FragmentActivity
+     * @param callBack      RPOpenPacketCallback
      */
-    private CheckPacketStatusPresenter checkADRedPacketStatus(final FragmentActivity activity, final RPOpenPacketCallback callBack) {
-        mCheckPacketStatusPresenter = new CheckPacketStatusPresenter(CheckPacketStatusPresenter.STATUS_EVENT_TAG_AD);
-        mCheckPacketStatusPresenter.attach(new CheckPacketContract.View() {
-
-            @Override
-            public void onCheckStatusSuccess(RedPacketInfo redPacketInfo, boolean isShowDialog) {
-                if (!isShowDialog) {
-                    callBack.hideLoading();
-                    Intent intent = new Intent(activity, RPDetailActivity.class);
-                    intent.putExtra(RPConstant.EXTRA_RED_PACKET_INFO, redPacketInfo);
-                    activity.startActivity(intent);
-                }
-            }
-
-            @Override
-            public void onPacketExpired(String message) {
-                callBack.hideLoading();
-                PayTipsDialogFragment dialog = PayTipsDialogFragment.newInstance(RPConstant.CLIENT_CODE_OTHER_ERROR, message);
-                showAllowingStateLost(dialog, activity);
-            }
-
-            @Override
-            public void onError(String code, String message) {
-                callBack.hideLoading();
-                callBack.onError(code, message);
-            }
-        });
-        return mCheckPacketStatusPresenter;
-    }
-
-    /**
-     * 查询非广告红包状态
-     *
-     * @param activity        FragmentActivity
-     * @param currentUserInfo 当前用户信息(即拆红包者信息)
-     * @param callBack        RPOpenPacketCallback
-     * @return CheckPacketStatusPresenter
-     */
-    private CheckPacketStatusPresenter checkRedPacketStatus(final FragmentActivity activity, final RedPacketInfo currentUserInfo, final RPOpenPacketCallback callBack) {
-        mCheckPacketStatusPresenter = new CheckPacketStatusPresenter(CheckPacketStatusPresenter.STATUS_EVENT_TAG_NOT_AD);
+    private void checkRedPacketStatus(String redPacketId, String redPacketType, final FragmentActivity activity, final RPOpenPacketCallback callBack) {
+        //detach the previous presenter
+        if (mCheckPacketStatusPresenter != null) {
+            mCheckPacketStatusPresenter.detach(true);
+            mCheckPacketStatusPresenter = null;
+        }
+        if (redPacketType.equals(RPConstant.RED_PACKET_TYPE_ADVERTISEMENT)) {
+            mCheckPacketStatusPresenter = new CheckPacketStatusPresenter(CheckPacketStatusPresenter.STATUS_EVENT_TAG_AD);
+        } else {
+            mCheckPacketStatusPresenter = new CheckPacketStatusPresenter(CheckPacketStatusPresenter.STATUS_EVENT_TAG_NOT_AD);
+        }
         mCheckPacketStatusPresenter.attach(new CheckPacketContract.View() {
             @Override
             public void onCheckStatusSuccess(final RedPacketInfo redPacketInfo, boolean isShowDialog) {
                 if (isShowDialog) {
-                    showRedPacketDialog(redPacketInfo, activity, currentUserInfo, callBack);
+                    showRedPacketDialog(redPacketInfo, activity, callBack);
                 } else {
-                    showRedPacketDetail(redPacketInfo, callBack, activity);
+                    showRedPacketDetail(redPacketInfo, activity, callBack);
                 }
             }
 
@@ -187,7 +153,7 @@ public class RPRedPacketUtil {
             }
 
         });
-        return mCheckPacketStatusPresenter;
+        mCheckPacketStatusPresenter.checkRedPacketStatus(redPacketId);
     }
 
 
@@ -195,10 +161,10 @@ public class RPRedPacketUtil {
      * 显示红包详情的方法
      *
      * @param redPacketInfo 红包详情数据
-     * @param callBack      RPOpenPacketCallback
      * @param activity      FragmentActivity
+     * @param callBack      RPOpenPacketCallback
      */
-    private void showRedPacketDetail(RedPacketInfo redPacketInfo, RPOpenPacketCallback callBack, FragmentActivity activity) {
+    private void showRedPacketDetail(RedPacketInfo redPacketInfo, FragmentActivity activity, RPOpenPacketCallback callBack) {
         if (redPacketInfo.redPacketType.equals(RPConstant.RED_PACKET_TYPE_SINGLE_RANDOM)) {
             if (redPacketInfo.messageDirect.equals(RPConstant.MESSAGE_DIRECT_RECEIVE)) {
                 if (redPacketInfo.status == RPConstant.RED_PACKET_STATUS_RECEIVABLE) {
@@ -215,7 +181,7 @@ public class RPRedPacketUtil {
                 if (mRandomDetailDialogFragment.isAdded()) return;
                 mRandomDetailDialogFragment.setArguments(redPacketInfo);
             }
-            if (mRandomDetailDialogFragment != null && !mRandomDetailDialogFragment.isAdded()) {//防止重复弹出对话框
+            if (mRandomDetailDialogFragment != null && !mRandomDetailDialogFragment.isAdded()) {
                 showAllowingStateLost(mRandomDetailDialogFragment, activity);
             }
         } else {
@@ -230,13 +196,13 @@ public class RPRedPacketUtil {
     /**
      * 显示红包对话框的方法
      *
-     * @param redPacketInfo   红包数据
-     * @param activity        FragmentActivity
-     * @param currentUserInfo 当前用户信息
-     * @param callBack        RPOpenPacketCallback
+     * @param redPacketInfo 红包数据
+     * @param activity      FragmentActivity
+     * @param callBack      RPOpenPacketCallback
      */
-    private void showRedPacketDialog(final RedPacketInfo redPacketInfo, final FragmentActivity activity, final RedPacketInfo currentUserInfo, final RPOpenPacketCallback callBack) {
+    private void showRedPacketDialog(final RedPacketInfo redPacketInfo, final FragmentActivity activity, final RPOpenPacketCallback callBack) {
         callBack.hideLoading();
+        final RedPacketInfo currentUserInfo = RedPacket.getInstance().getRPInitRedPacketCallback().initCurrentUserSync();
         if (!TextUtils.isEmpty(redPacketInfo.redPacketType) && TextUtils.equals(redPacketInfo.redPacketType, RPConstant.RED_PACKET_TYPE_GROUP_EXCLUSIVE)) {
             if (mSRedPacketDialogFragment == null) {
                 mSRedPacketDialogFragment = SRedPacketDialogFragment.newInstance(redPacketInfo);
@@ -311,7 +277,7 @@ public class RPRedPacketUtil {
      */
     private void enterRandomRedPacket(RedPacketInfo redPacketInfo, FragmentActivity activity) {
         RandomPacketDialogFragment randomPacketDialogFragment = RandomPacketDialogFragment.newInstance(redPacketInfo);
-        if (randomPacketDialogFragment != null && !randomPacketDialogFragment.isAdded()) {//防止重复弹出对话框
+        if (randomPacketDialogFragment != null && !randomPacketDialogFragment.isAdded()) {
             showAllowingStateLost(randomPacketDialogFragment, activity);
         }
     }
