@@ -8,14 +8,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.yunzhanghu.redpacketsdk.bean.RedPacketInfo;
 import com.yunzhanghu.redpacketsdk.constant.RPConstant;
 import com.yunzhanghu.redpacketsdk.contract.ReceivePacketContract;
 import com.yunzhanghu.redpacketsdk.presenter.impl.ReceivePacketPresenter;
 import com.yunzhanghu.redpacketui.R;
 import com.yunzhanghu.redpacketui.ui.base.RPBaseDialogFragment;
-import com.yunzhanghu.redpacketui.utils.CircleTransform;
+import com.yunzhanghu.redpacketui.utils.GlideUtils;
 
 import java.io.UnsupportedEncodingException;
 
@@ -75,26 +74,22 @@ public class RandomDetailDialogFragment extends RPBaseDialogFragment implements 
     @Override
     protected void initViewsAndEvents(View view, Bundle savedInstanceState) {
         View closeLayout = view.findViewById(R.id.rl_random_detail_closed);
-        TextView toUserName = (TextView) view.findViewById(R.id.tv_random_detail_username);
-        TextView randomGreeting = (TextView) view.findViewById(R.id.tv_random_detail_greeting);
+        TextView toUserName = view.findViewById(R.id.tv_random_detail_username);
+        TextView randomGreeting = view.findViewById(R.id.tv_random_detail_greeting);
         mAvatarView = view.findViewById(R.id.layout_random_detail_avatar);
-        ImageView toAvatar = (ImageView) view.findViewById(R.id.iv_random_detail_avatar);
-        TextView randomAmount = (TextView) view.findViewById(R.id.tv_random_detail_amount);
-        TextView randomState = (TextView) view.findViewById(R.id.tv_random_detail_state);
-        LinearLayout randomFromLayout = (LinearLayout) view.findViewById(R.id.ll_random_detail_switch);
-        ImageView fromAvatar = (ImageView) view.findViewById(R.id.iv_random_detail_from_icon);
-        TextView fromUserName = (TextView) view.findViewById(R.id.tv_random_detail_from_name);
+        ImageView toAvatar = view.findViewById(R.id.iv_random_detail_avatar);
+        TextView randomAmount = view.findViewById(R.id.tv_random_detail_amount);
+        TextView randomState = view.findViewById(R.id.tv_random_detail_state);
+        LinearLayout randomFromLayout = view.findViewById(R.id.ll_random_detail_switch);
+        ImageView fromAvatar = view.findViewById(R.id.iv_random_detail_from_icon);
+        TextView fromUserName = view.findViewById(R.id.tv_random_detail_from_name);
         int status = mRandomDetail.status;
 
         closeLayout.setOnClickListener(this);
         if (mRandomDetail.messageDirect.equals(RPConstant.MESSAGE_DIRECT_RECEIVE)) {
             randomFromLayout.setVisibility(View.VISIBLE);
             if (!TextUtils.isEmpty(mRandomDetail.senderAvatarUrl)) {
-                Glide.with(mContext).load(mRandomDetail.senderAvatarUrl)
-                        .error(R.drawable.rp_avatar)
-                        .placeholder(R.drawable.rp_avatar)
-                        .transform(new CircleTransform(mContext))
-                        .into(fromAvatar);
+                GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mRandomDetail.senderAvatarUrl, fromAvatar);
             }
             if (!TextUtils.isEmpty(mRandomDetail.senderNickname)) {
                 String senderNickname = calculateNameByte(mRandomDetail.senderNickname);
@@ -127,11 +122,7 @@ public class RandomDetailDialogFragment extends RPBaseDialogFragment implements 
             toUserName.setText(String.format(mContext.getString(R.string.random_to_username), receiverNickname));
         }
         if (!TextUtils.isEmpty(mRandomDetail.receiverAvatarUrl)) {
-            Glide.with(mContext).load(mRandomDetail.receiverAvatarUrl)
-                    .error(R.drawable.rp_avatar)
-                    .placeholder(R.drawable.rp_avatar)
-                    .transform(new CircleTransform(mContext))
-                    .into(toAvatar);
+            GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mRandomDetail.receiverAvatarUrl, toAvatar);
         }
         if (!TextUtils.isEmpty(mRandomDetail.redPacketAmount)) {
             randomAmount.setText(String.format(getString(R.string.detail_money_sign), mRandomDetail.redPacketAmount));

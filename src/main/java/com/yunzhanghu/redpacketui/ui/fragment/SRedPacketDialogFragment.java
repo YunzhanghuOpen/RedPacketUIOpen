@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.yunzhanghu.redpacketsdk.RPValueCallback;
 import com.yunzhanghu.redpacketsdk.bean.RedPacketInfo;
 import com.yunzhanghu.redpacketsdk.constant.RPConstant;
@@ -25,8 +26,8 @@ import com.yunzhanghu.redpacketui.R;
 import com.yunzhanghu.redpacketui.alipay.AliPay;
 import com.yunzhanghu.redpacketui.ui.activity.RPDetailActivity;
 import com.yunzhanghu.redpacketui.ui.base.RPBaseDialogFragment;
-import com.yunzhanghu.redpacketui.utils.CircleTransform;
 import com.yunzhanghu.redpacketui.utils.ClickUtil;
+import com.yunzhanghu.redpacketui.utils.GlideUtils;
 
 /**
  * Created by desert on 16/6/13
@@ -108,36 +109,28 @@ public class SRedPacketDialogFragment extends RPBaseDialogFragment<ReceivePacket
 
     @Override
     protected void initViewsAndEvents(View view, Bundle savedInstanceState) {
-        mAvatarView = (ImageView) view.findViewById(R.id.iv_avatar);
-        mLayoutAvatar = (FrameLayout) view.findViewById(R.id.layout_exclusive_avatar);
-        mBtnOpen = (Button) view.findViewById(R.id.btn_exclusive_open_money);
-        mTvGreeting = (TextView) view.findViewById(R.id.tv_exclusive_greeting);
-        mTvAmount = (TextView) view.findViewById(R.id.tv_exclusive_amount);
-        tvUserName = (TextView) view.findViewById(R.id.tv_exclusive_username);
-        tvTitle = (TextView) view.findViewById(R.id.tv_exclusive_title);
+        mAvatarView = view.findViewById(R.id.iv_avatar);
+        mLayoutAvatar = view.findViewById(R.id.layout_exclusive_avatar);
+        mBtnOpen = view.findViewById(R.id.btn_exclusive_open_money);
+        mTvGreeting = view.findViewById(R.id.tv_exclusive_greeting);
+        mTvAmount = view.findViewById(R.id.tv_exclusive_amount);
+        tvUserName = view.findViewById(R.id.tv_exclusive_username);
+        tvTitle = view.findViewById(R.id.tv_exclusive_title);
         View closeLayout = view.findViewById(R.id.layout_exclusive_closed);
-        ImageView ivOpenBg = (ImageView) view.findViewById(R.id.iv_open_bg);
-        ImageView mIvSendAvatar = (ImageView) view.findViewById(R.id.iv_send_avatar);
-        ImageView mIvReceiveAvatar = (ImageView) view.findViewById(R.id.iv_receive_avatar);
+        ImageView ivOpenBg = view.findViewById(R.id.iv_open_bg);
+        ImageView mIvSendAvatar = view.findViewById(R.id.iv_send_avatar);
+        ImageView mIvReceiveAvatar = view.findViewById(R.id.iv_receive_avatar);
         closeLayout.setOnClickListener(this);
         mBtnOpen.setOnClickListener(this);
         if (!TextUtils.isEmpty(mRedPacketInfo.senderAvatarUrl)) {
-            Glide.with(mContext).load(mRedPacketInfo.senderAvatarUrl)
-                    .error(R.drawable.rp_avatar)
-                    .placeholder(R.drawable.rp_avatar)
-                    .transform(new CircleTransform(mContext))
-                    .into(mIvSendAvatar);
+            GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mRedPacketInfo.senderAvatarUrl, mIvSendAvatar);
         }
         if (!TextUtils.isEmpty(mRedPacketInfo.receiverAvatarUrl)) {
-            Glide.with(mContext).load(mRedPacketInfo.receiverAvatarUrl)
-                    .error(R.drawable.rp_avatar)
-                    .placeholder(R.drawable.rp_avatar)
-                    .transform(new CircleTransform(mContext))
-                    .into(mIvReceiveAvatar);
+            GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mRedPacketInfo.receiverAvatarUrl, mIvReceiveAvatar);
         }
         if (!TextUtils.isEmpty(RPPreferenceManager.getInstance().getOpenUrl())) {
             Glide.with(mContext).load(RPPreferenceManager.getInstance().getOpenUrl())
-                    .error(R.drawable.rp_open_packet_bg)
+                    .apply(new RequestOptions().error(R.drawable.rp_open_packet_bg))
                     .into(ivOpenBg);
         }
         int status = mRedPacketInfo.status;
