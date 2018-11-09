@@ -18,6 +18,7 @@
             android:layout_width="@dimen/size105px"
             android:layout_height="@dimen/size105px"
             android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="@dimen/size45px"
             android:src="@drawable/rp_avatar"
             />
