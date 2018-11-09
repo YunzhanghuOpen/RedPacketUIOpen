@@ -12,14 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.yunzhanghu.redpacketsdk.bean.RedPacketInfo;
 import com.yunzhanghu.redpacketsdk.constant.RPConstant;
 import com.yunzhanghu.redpacketsdk.utils.RPPreferenceManager;
 import com.yunzhanghu.redpacketui.R;
 import com.yunzhanghu.redpacketui.callback.OnAliUserClickListener;
-import com.yunzhanghu.redpacketui.utils.CircleTransform;
 import com.yunzhanghu.redpacketui.utils.DateUtils;
+import com.yunzhanghu.redpacketui.utils.GlideUtils;
 
 import java.util.ArrayList;
 
@@ -146,11 +145,7 @@ public class ReceivedRecordAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 break;
         }
         if (!TextUtils.isEmpty(mCurrentAvatarUrl)) {
-            Glide.with(mContext).load(mCurrentAvatarUrl)
-                    .error(R.drawable.rp_avatar)
-                    .placeholder(R.drawable.rp_avatar)
-                    .transform(new CircleTransform(mContext))
-                    .into(headerViewHolder.ivAvatar);
+            GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mCurrentAvatarUrl, headerViewHolder.ivAvatar);
         }
         if (mList.size() == 1) {
             headerViewHolder.tvNoRedPacket.setVisibility(View.VISIBLE);
@@ -186,11 +181,7 @@ public class ReceivedRecordAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (TextUtils.isEmpty(redPacketInfo.senderAvatarUrl)) {
             redPacketInfo.senderAvatarUrl = "none";
         }
-        Glide.with(mContext).load(redPacketInfo.senderAvatarUrl)
-                .error(R.drawable.rp_avatar)
-                .placeholder(R.drawable.rp_avatar)
-                .transform(new CircleTransform(mContext))
-                .into(itemViewHolder.ivAvatar);
+        GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, redPacketInfo.senderAvatarUrl, itemViewHolder.ivAvatar);
     }
 
     @Override

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.yunzhanghu.redpacketsdk.RPValueCallback;
 import com.yunzhanghu.redpacketsdk.bean.RedPacketInfo;
 import com.yunzhanghu.redpacketsdk.constant.RPConstant;
@@ -20,8 +21,8 @@ import com.yunzhanghu.redpacketui.R;
 import com.yunzhanghu.redpacketui.alipay.AliPay;
 import com.yunzhanghu.redpacketui.ui.activity.RPDetailActivity;
 import com.yunzhanghu.redpacketui.ui.base.RPBaseDialogFragment;
-import com.yunzhanghu.redpacketui.utils.CircleTransform;
 import com.yunzhanghu.redpacketui.utils.ClickUtil;
+import com.yunzhanghu.redpacketui.utils.GlideUtils;
 
 /**
  * Created by max on 16/1/22
@@ -95,26 +96,22 @@ public class RedPacketDialogFragment extends RPBaseDialogFragment<ReceivePacketC
 
     @Override
     protected void initViewsAndEvents(View view, Bundle savedInstanceState) {
-        ImageView ivOpenBg = (ImageView) view.findViewById(R.id.iv_open_bg);
-        mBtnOpen = (Button) view.findViewById(R.id.btn_open_money);
+        ImageView ivOpenBg = view.findViewById(R.id.iv_open_bg);
+        mBtnOpen = view.findViewById(R.id.btn_open_money);
         View closeLayout = view.findViewById(R.id.layout_closed);
-        TextView tvUserName = (TextView) view.findViewById(R.id.tv_username);
-        mTvGreeting = (TextView) view.findViewById(R.id.tv_greeting);
+        TextView tvUserName = view.findViewById(R.id.tv_username);
+        mTvGreeting = view.findViewById(R.id.tv_greeting);
         mAvatarView = view.findViewById(R.id.layout_avatar);
-        ImageView ivAvatar = (ImageView) view.findViewById(R.id.iv_avatar);
-        mTvTitle = (TextView) view.findViewById(R.id.tv_open_title);
-        mTvCheckLucky = (TextView) view.findViewById(R.id.tv_check_lucky);
+        ImageView ivAvatar = view.findViewById(R.id.iv_avatar);
+        mTvTitle = view.findViewById(R.id.tv_open_title);
+        mTvCheckLucky = view.findViewById(R.id.tv_check_lucky);
         mTvCheckLucky.setOnClickListener(this);
         if (!TextUtils.isEmpty(mRedPacketInfo.senderAvatarUrl)) {
-            Glide.with(mContext).load(mRedPacketInfo.senderAvatarUrl)
-                    .error(R.drawable.rp_avatar)
-                    .placeholder(R.drawable.rp_avatar)
-                    .transform(new CircleTransform(mContext))
-                    .into(ivAvatar);
+            GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mRedPacketInfo.senderAvatarUrl, ivAvatar);
         }
         if (!TextUtils.isEmpty(RPPreferenceManager.getInstance().getOpenUrl())) {
             Glide.with(mContext).load(RPPreferenceManager.getInstance().getOpenUrl())
-                    .error(R.drawable.rp_open_packet_bg)
+                    .apply(new RequestOptions().error(R.drawable.rp_open_packet_bg))
                     .into(ivOpenBg);
         }
         closeLayout.setOnClickListener(this);

@@ -10,11 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.yunzhanghu.redpacketsdk.bean.RPUserBean;
 import com.yunzhanghu.redpacketui.R;
 import com.yunzhanghu.redpacketui.indexrecyclerview.StickyRecyclerHeadersAdapter;
-import com.yunzhanghu.redpacketui.utils.CircleTransform;
+import com.yunzhanghu.redpacketui.utils.GlideUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,11 +49,7 @@ public class GroupMemberAdapter extends RecyclerView.Adapter<GroupMemberAdapter.
         if (position == 0) {
             drawableId = R.drawable.rp_group_everyone;
         }
-        Glide.with(mContext).load(mList.get(position).userAvatar)
-                .error(drawableId)
-                .placeholder(drawableId)
-                .transform(new CircleTransform(mContext))
-                .into(holder.mIvAvatar);
+        GlideUtils.loadRoundAvatar(mContext, drawableId, mList.get(position).userAvatar, holder.mIvAvatar);
         if (mList.size() > (position + 1) && mList.get(position).sortLetters.equals(mList.get(position + 1).sortLetters)) {
             holder.mLine.setVisibility(View.VISIBLE);
         }
@@ -137,8 +132,8 @@ public class GroupMemberAdapter extends RecyclerView.Adapter<GroupMemberAdapter.
 
         ContactViewHolder(View itemView) {
             super(itemView);
-            mTvName = (TextView) itemView.findViewById(R.id.item_name);
-            mIvAvatar = (ImageView) itemView.findViewById(R.id.item_image);
+            mTvName = itemView.findViewById(R.id.item_name);
+            mIvAvatar = itemView.findViewById(R.id.item_image);
             mLine = itemView.findViewById(R.id.item_line);
 
         }

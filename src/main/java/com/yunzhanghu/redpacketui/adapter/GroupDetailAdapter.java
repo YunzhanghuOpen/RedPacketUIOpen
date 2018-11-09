@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.yunzhanghu.redpacketsdk.bean.RedPacketInfo;
 import com.yunzhanghu.redpacketsdk.constant.RPConstant;
 import com.yunzhanghu.redpacketui.R;
-import com.yunzhanghu.redpacketui.utils.CircleTransform;
 import com.yunzhanghu.redpacketui.utils.DateUtils;
+import com.yunzhanghu.redpacketui.utils.GlideUtils;
 
 import java.util.ArrayList;
 
@@ -83,11 +82,7 @@ public class GroupDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         String messageDirect = redPacketInfo.messageDirect;
         headerViewHolder.tvUserName.setText(redPacketInfo.senderNickname);
         if (!TextUtils.isEmpty(redPacketInfo.senderAvatarUrl)) {
-            Glide.with(mContext).load(redPacketInfo.senderAvatarUrl)
-                    .error(R.drawable.rp_avatar)
-                    .placeholder(R.drawable.rp_avatar)
-                    .transform(new CircleTransform(mContext))
-                    .into(headerViewHolder.ivAvatar);
+            GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, redPacketInfo.senderAvatarUrl, headerViewHolder.ivAvatar);
         }
         headerViewHolder.tvGreeting.setText(redPacketInfo.redPacketGreeting);
         if (TextUtils.isEmpty(redPacketInfo.myAmount)) {//没抢到
@@ -146,11 +141,7 @@ public class GroupDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if (TextUtils.isEmpty(redPacketInfo.receiverAvatarUrl)) {
             redPacketInfo.receiverAvatarUrl = "none";
         }
-        Glide.with(mContext).load(redPacketInfo.receiverAvatarUrl)
-                .error(R.drawable.rp_avatar)
-                .placeholder(R.drawable.rp_avatar)
-                .transform(new CircleTransform(mContext))
-                .into(itemViewHolder.ivAvatar);
+        GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, redPacketInfo.receiverAvatarUrl, itemViewHolder.ivAvatar);
         if (redPacketInfo.redPacketType.equals(RPConstant.RED_PACKET_TYPE_GROUP_RANDOM)) {
             if (redPacketInfo.isBest) {
                 itemViewHolder.tvBestLuck.setVisibility(View.VISIBLE);
@@ -207,13 +198,13 @@ public class GroupDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
 
         private void initView(View v) {
-            tvUserName = (TextView) v.findViewById(R.id.tv_money_sender);
-            tvGreeting = (TextView) v.findViewById(R.id.tv_greeting);
-            tvMoneyStatus = (TextView) v.findViewById(R.id.tv_money_status);
-            tvMoneyAmount = (TextView) v.findViewById(R.id.tv_money_amount);
-            ivAvatar = (ImageView) v.findViewById(R.id.iv_avatar);
-            tvMoneyUse = (TextView) v.findViewById(R.id.tv_money_use);
-            ivGroupIcon = (ImageView) v.findViewById(R.id.iv_group_random);
+            tvUserName = v.findViewById(R.id.tv_money_sender);
+            tvGreeting = v.findViewById(R.id.tv_greeting);
+            tvMoneyStatus = v.findViewById(R.id.tv_money_status);
+            tvMoneyAmount = v.findViewById(R.id.tv_money_amount);
+            ivAvatar = v.findViewById(R.id.iv_avatar);
+            tvMoneyUse = v.findViewById(R.id.tv_money_use);
+            ivGroupIcon = v.findViewById(R.id.iv_group_random);
         }
     }
 
@@ -230,11 +221,11 @@ public class GroupDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
 
         private void initView(View v) {
-            ivAvatar = (ImageView) v.findViewById(R.id.iv_item_avatar_icon);
-            tvUserName = (TextView) v.findViewById(R.id.tv_money_to_user);
-            tvDate = (TextView) v.findViewById(R.id.tv_time);
-            tvMoneyAmount = (TextView) v.findViewById(R.id.tv_item_money_amount);
-            tvBestLuck = (TextView) v.findViewById(R.id.tv_best_icon);
+            ivAvatar = v.findViewById(R.id.iv_item_avatar_icon);
+            tvUserName = v.findViewById(R.id.tv_money_to_user);
+            tvDate = v.findViewById(R.id.tv_time);
+            tvMoneyAmount = v.findViewById(R.id.tv_item_money_amount);
+            tvBestLuck = v.findViewById(R.id.tv_best_icon);
         }
     }
 

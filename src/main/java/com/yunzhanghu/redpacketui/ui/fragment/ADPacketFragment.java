@@ -3,7 +3,9 @@ package com.yunzhanghu.redpacketui.ui.fragment;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -18,9 +20,9 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.DrawableImageViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.yunzhanghu.redpacketsdk.bean.RedPacketInfo;
 import com.yunzhanghu.redpacketsdk.constant.RPConstant;
 import com.yunzhanghu.redpacketsdk.contract.ReceivePacketContract;
@@ -28,7 +30,6 @@ import com.yunzhanghu.redpacketsdk.presenter.impl.ReceivePacketPresenter;
 import com.yunzhanghu.redpacketui.R;
 import com.yunzhanghu.redpacketui.alipay.AliPay;
 import com.yunzhanghu.redpacketui.ui.base.RPBaseFragment;
-import com.yunzhanghu.redpacketui.utils.CircleTransform;
 import com.yunzhanghu.redpacketui.utils.ClickUtil;
 import com.yunzhanghu.redpacketui.utils.RPRedPacketUtil;
 import com.yunzhanghu.redpacketui.widget.RPTextView;
@@ -88,16 +89,16 @@ public class ADPacketFragment extends RPBaseFragment<ReceivePacketContract.View,
             assert mRedPacketInfo != null;
             mPresenter.sendADStatistics(RPConstant.STATISTICS_TYPE_OPEN_AD, mRedPacketInfo.redPacketId);
         }
-        mAdBg = (ImageView) view.findViewById(R.id.iv_advert_bg);
-        mAdIcon = (ImageView) view.findViewById(R.id.iv_advert_icon);
-        mTVSponsor = (TextView) view.findViewById(R.id.tv_ad_sponsor_name);
-        mTVGreeting = (TextView) view.findViewById(R.id.tv_ad_receive_greeting);
-        mTVMoney = (TextView) view.findViewById(R.id.tv_ad_money);
-        mTVHint = (TextView) view.findViewById(R.id.tv_ad_hint);
-        mLayoutBom = (RelativeLayout) view.findViewById(R.id.layout_ad_bottom);
-        mBtnReceive = (Button) view.findViewById(R.id.btn_click_received);
-        mTVLook = (RPTextView) view.findViewById(R.id.tv_check_land);
-        mTVShare = (RPTextView) view.findViewById(R.id.tv_check_share);
+        mAdBg = view.findViewById(R.id.iv_advert_bg);
+        mAdIcon = view.findViewById(R.id.iv_advert_icon);
+        mTVSponsor = view.findViewById(R.id.tv_ad_sponsor_name);
+        mTVGreeting = view.findViewById(R.id.tv_ad_receive_greeting);
+        mTVMoney = view.findViewById(R.id.tv_ad_money);
+        mTVHint = view.findViewById(R.id.tv_ad_hint);
+        mLayoutBom = view.findViewById(R.id.layout_ad_bottom);
+        mBtnReceive = view.findViewById(R.id.btn_click_received);
+        mTVLook = view.findViewById(R.id.tv_check_land);
+        mTVShare = view.findViewById(R.id.tv_check_share);
         mButtonLayout = view.findViewById(R.id.ad_ll_extra);
         mBtnReceive.setOnClickListener(this);
         mTVLook.setOnClickListener(this);
@@ -108,14 +109,13 @@ public class ADPacketFragment extends RPBaseFragment<ReceivePacketContract.View,
 
     private void showAdPacket() {
         adaptationADBanner();
-        Glide.with(mContext).load(mBannerUrl).into(new GlideDrawableImageViewTarget(mAdBg) {
+        Glide.with(mContext).load(mBannerUrl).into(new DrawableImageViewTarget(mAdBg) {
             @Override
-            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
-                super.onResourceReady(resource, animation);
+            public void onResourceReady(@NonNull Drawable drawable, Transition<? super Drawable> transition) {
                 mPresenter.sendADStatistics(RPConstant.STATISTICS_TYPE_VIEW_AD, mRedPacketInfo.redPacketId);
             }
         });
-        Glide.with(mContext).load(mRedPacketInfo.logoURL).transform(new CircleTransform(mContext)).into(mAdIcon);
+        Glide.with(mContext).load(mRedPacketInfo.logoURL).apply(new RequestOptions().circleCrop()).into(mAdIcon);
         mLayoutBom.setBackgroundColor(Color.parseColor(mRedPacketInfo.adBgColor));
         mTVSponsor.setText(String.format(getString(R.string.money_sponsor_username_format), mRedPacketInfo.ownerName));
         if (mRedPacketInfo.status == RPConstant.RED_PACKET_STATUS_RECEIVABLE) {//未领取
@@ -286,7 +286,7 @@ public class ADPacketFragment extends RPBaseFragment<ReceivePacketContract.View,
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Glide.clear(mAdBg);//取消下载
+        Glide.with(this).clear(mAdBg);//取消下载
     }
 
     private int getStatusBarHeight() {

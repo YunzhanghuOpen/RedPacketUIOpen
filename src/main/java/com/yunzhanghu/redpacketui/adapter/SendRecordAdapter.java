@@ -9,11 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.yunzhanghu.redpacketsdk.bean.RedPacketInfo;
 import com.yunzhanghu.redpacketui.R;
-import com.yunzhanghu.redpacketui.utils.CircleTransform;
 import com.yunzhanghu.redpacketui.utils.DateUtils;
+import com.yunzhanghu.redpacketui.utils.GlideUtils;
 
 import java.util.ArrayList;
 
@@ -86,11 +85,7 @@ public class SendRecordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         headerViewHolder.tvTotalMoney.setText(String.format("￥%s", redPacketInfo.totalMoney));
         headerViewHolder.tvTotalCount.setText(String.valueOf(redPacketInfo.totalCount));
         if (!TextUtils.isEmpty(mCurrentAvatarUrl)) {
-            Glide.with(mContext).load(mCurrentAvatarUrl)
-                    .error(R.drawable.rp_avatar)
-                    .placeholder(R.drawable.rp_avatar)
-                    .transform(new CircleTransform(mContext))
-                    .into(headerViewHolder.ivAvatar);
+            GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mCurrentAvatarUrl, headerViewHolder.ivAvatar);
         }
     }
 

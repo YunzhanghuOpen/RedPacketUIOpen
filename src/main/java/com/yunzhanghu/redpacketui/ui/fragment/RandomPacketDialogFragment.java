@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.yunzhanghu.redpacketsdk.RPTokenCallback;
 import com.yunzhanghu.redpacketsdk.RedPacket;
 import com.yunzhanghu.redpacketsdk.bean.RedPacketInfo;
@@ -21,8 +20,8 @@ import com.yunzhanghu.redpacketui.R;
 import com.yunzhanghu.redpacketui.alipay.AliPay;
 import com.yunzhanghu.redpacketui.ui.activity.RPRedPacketActivity;
 import com.yunzhanghu.redpacketui.ui.base.RPBaseDialogFragment;
-import com.yunzhanghu.redpacketui.utils.CircleTransform;
 import com.yunzhanghu.redpacketui.utils.ClickUtil;
+import com.yunzhanghu.redpacketui.utils.GlideUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -138,11 +137,7 @@ public class RandomPacketDialogFragment extends RPBaseDialogFragment<SendPacketC
         mBtnSend.setVisibility(View.GONE);
         mSwitchAmount.setVisibility(View.GONE);
         if (!TextUtils.isEmpty(mRedPacketInfo.receiverAvatarUrl)) {
-            Glide.with(mContext).load(mRedPacketInfo.receiverAvatarUrl)
-                    .error(R.drawable.rp_avatar)
-                    .placeholder(R.drawable.rp_avatar)
-                    .transform(new CircleTransform(mContext))
-                    .into(ivAvatar);
+            GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mRedPacketInfo.receiverAvatarUrl, ivAvatar);
         }
         if (!TextUtils.isEmpty(mRedPacketInfo.receiverNickname)) {
             String receiverNickname = calculateNameByte(mRedPacketInfo.receiverNickname);

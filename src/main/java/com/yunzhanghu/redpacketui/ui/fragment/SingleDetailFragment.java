@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.yunzhanghu.redpacketsdk.bean.RedPacketInfo;
 import com.yunzhanghu.redpacketsdk.constant.RPConstant;
 import com.yunzhanghu.redpacketsdk.presenter.IBasePresenter;
@@ -15,8 +16,8 @@ import com.yunzhanghu.redpacketsdk.utils.RPPreferenceManager;
 import com.yunzhanghu.redpacketui.R;
 import com.yunzhanghu.redpacketui.ui.activity.RPRecordActivity;
 import com.yunzhanghu.redpacketui.ui.base.RPBaseFragment;
-import com.yunzhanghu.redpacketui.utils.CircleTransform;
 import com.yunzhanghu.redpacketui.utils.DateUtils;
+import com.yunzhanghu.redpacketui.utils.GlideUtils;
 
 /**
  * Created by max on 16/3/27
@@ -45,25 +46,25 @@ public class SingleDetailFragment extends RPBaseFragment implements View.OnClick
         if (getArguments() != null) {
             mRedPacketInfo = getArguments().getParcelable(ARGS_RED_PACKET_DETAIL);
         }
-        ImageView ivBg = (ImageView) view.findViewById(R.id.iv_detail_bg);
-        ImageView mIvSenderAvatar = (ImageView) view.findViewById(R.id.iv_avatar);
-        ImageView mIvIcon = (ImageView) view.findViewById(R.id.iv_group_random);
-        TextView mTvSender = (TextView) view.findViewById(R.id.tv_money_sender);
-        TextView mTvGreeting = (TextView) view.findViewById(R.id.tv_greeting);
-        TextView mTvMoneyAmount = (TextView) view.findViewById(R.id.tv_money_amount);
-        TextView mTvMoneyUse = (TextView) view.findViewById(R.id.tv_money_use);
-        TextView tvCheckRecords = (TextView) view.findViewById(R.id.tv_check_records);
-        TextView mTvMoneyStatus = (TextView) view.findViewById(R.id.tv_money_status);
+        ImageView ivBg = view.findViewById(R.id.iv_detail_bg);
+        ImageView mIvSenderAvatar = view.findViewById(R.id.iv_avatar);
+        ImageView mIvIcon = view.findViewById(R.id.iv_group_random);
+        TextView mTvSender = view.findViewById(R.id.tv_money_sender);
+        TextView mTvGreeting = view.findViewById(R.id.tv_greeting);
+        TextView mTvMoneyAmount = view.findViewById(R.id.tv_money_amount);
+        TextView mTvMoneyUse = view.findViewById(R.id.tv_money_use);
+        TextView tvCheckRecords = view.findViewById(R.id.tv_check_records);
+        TextView mTvMoneyStatus = view.findViewById(R.id.tv_money_status);
         View statusLayout = view.findViewById(R.id.status_layout);
         View mLayoutItem = view.findViewById(R.id.layout_item);
-        ImageView mIvReceiverAvatar = (ImageView) view.findViewById(R.id.iv_item_avatar_icon);
-        TextView mTvReceiver = (TextView) view.findViewById(R.id.tv_money_to_user);
-        TextView mTvTime = (TextView) view.findViewById(R.id.tv_time);
-        TextView mTvItemAmount = (TextView) view.findViewById(R.id.tv_item_money_amount);
+        ImageView mIvReceiverAvatar = view.findViewById(R.id.iv_item_avatar_icon);
+        TextView mTvReceiver = view.findViewById(R.id.tv_money_to_user);
+        TextView mTvTime = view.findViewById(R.id.tv_time);
+        TextView mTvItemAmount = view.findViewById(R.id.tv_item_money_amount);
         tvCheckRecords.setOnClickListener(this);
         if (!TextUtils.isEmpty(RPPreferenceManager.getInstance().getBgUrl())) {
             Glide.with(mContext).load(RPPreferenceManager.getInstance().getBgUrl())
-                    .error(R.drawable.rp_open_packet_bg)
+                    .apply(new RequestOptions().error(R.drawable.rp_open_packet_bg))
                     .into(ivBg);
         }
         if (mRedPacketInfo.messageDirect.equals(RPConstant.MESSAGE_DIRECT_SEND)) {
@@ -80,19 +81,12 @@ public class SingleDetailFragment extends RPBaseFragment implements View.OnClick
                 mTvMoneyStatus.setText(String.format(getResources().getString(R.string.money_status_expired), mRedPacketInfo.redPacketAmount));
                 mLayoutItem.setVisibility(View.GONE);
             }
+
             if (!TextUtils.isEmpty(mRedPacketInfo.senderAvatarUrl)) {
-                Glide.with(mContext).load(mRedPacketInfo.senderAvatarUrl)
-                        .error(R.drawable.rp_avatar)
-                        .placeholder(R.drawable.rp_avatar)
-                        .transform(new CircleTransform(mContext))
-                        .into(mIvSenderAvatar);
+                GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mRedPacketInfo.senderAvatarUrl, mIvSenderAvatar);
             }
             if (!TextUtils.isEmpty(mRedPacketInfo.receiverAvatarUrl)) {
-                Glide.with(mContext).load(mRedPacketInfo.receiverAvatarUrl)
-                        .error(R.drawable.rp_avatar)
-                        .placeholder(R.drawable.rp_avatar)
-                        .transform(new CircleTransform(mContext))
-                        .into(mIvReceiverAvatar);
+                GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mRedPacketInfo.receiverAvatarUrl, mIvReceiverAvatar);
             }
             mTvReceiver.setText(mRedPacketInfo.receiverNickname);
             mTvTime.setText(DateUtils.getDateFormat(mRedPacketInfo.date));
@@ -119,11 +113,7 @@ public class SingleDetailFragment extends RPBaseFragment implements View.OnClick
                 mIvIcon.setBackgroundResource(R.drawable.rp_exclusive_icon);
             }
             if (!TextUtils.isEmpty(mRedPacketInfo.senderAvatarUrl)) {
-                Glide.with(mContext).load(mRedPacketInfo.senderAvatarUrl)
-                        .error(R.drawable.rp_avatar)
-                        .placeholder(R.drawable.rp_avatar)
-                        .transform(new CircleTransform(mContext))
-                        .into(mIvSenderAvatar);
+                GlideUtils.loadRoundAvatar(mContext, R.drawable.rp_avatar, mRedPacketInfo.senderAvatarUrl, mIvSenderAvatar);
             }
         }
     }
