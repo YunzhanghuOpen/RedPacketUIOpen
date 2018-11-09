@@ -1,11 +1,11 @@
 apply plugin: 'com.android.library'
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
-        minSdkVersion 11
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -18,12 +18,12 @@ android {
 
 }
 dependencies {
-    compile files('libs/alipaySdk-20161129.jar')
-    compile files('libs/volley-1.0.19.jar')
-    compile 'com.yunzhanghu.redpacket:redpacket-sdk-alipay:2.0.1'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    api files('libs/alipaySdk-20161129.jar')
+    api files('libs/volley-1.0.19.jar')
+    api 'com.yunzhanghu.redpacket:redpacket-sdk-alipay:2.0.1'
+    api 'com.github.bumptech.glide:glide:4.8.0'
+    api 'com.android.support:support-v4:28.0.0'
+    api 'com.android.support:recyclerview-v7:28.0.0'
 }
 
 
